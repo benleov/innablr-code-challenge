@@ -46,18 +46,20 @@ accustomed to.
 
 ### Notes
 
-Workflow is as follows:
+There are 4 containers managed by docker-compose:
 
-- Dockerfile-develop - A container to run while developing locally
+- Dockerfile-develop - A container to run while developing locally (watches changes)
 - Dockerfile-test - A container to run jest tests
 - Dockerfile-package - Packages up node source with build.yml and .env file (containing commit hash) and puts it into ./dist
 - Dockerfile-production - Adds dist directory to container, puts .env into the environment and runs node.
 
-- ```build.yml``` contains metadata about the project, including the application name, version and description.
-- ```lastcommitsha``` is placed in an .env file by package, and then read into the environment before running node.
+```build.yml``` contains metadata about the project, including the application name, version and description.
+
 - Application source code is in ```src/```
 - Application test source code is in ```test/```
 - Script for pushing image to docker.io is in ```scripts/docker-push```
+
+### Commands
 
 To run development server:
 
