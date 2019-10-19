@@ -46,12 +46,10 @@ accustomed to.
 
 ### Notes
 
-- build.yml contains metadata about the project, including the application name, version and description.
-- lastcommitsha - this should be passed in at build time; the build should not contain git history or the git repo!!
-
-# Your repository should define a comprehensive pipeline that has at least the following stages: test, build, publish.
-  
-- 
+- ```build.yml``` ontains metadata about the project, including the application name, version and description.
+- ```lastcommitsha``` - is placed in an .env file by package, and then read into the environment when running.
+- Application source code is in ```src/```
+- Application test source code is in ```test/```
 
 To run development container:
 
@@ -84,3 +82,4 @@ To run production container:
 ```$command
 docker-compose up production
 ```
+

@@ -1,5 +1,5 @@
 #!/bin/bash
 docker images
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker tag innablr_production:latest $DOCKER_USERNAME/innablr_production
-docker push $DOCKER_USERNAME/innablr_production
+docker tag innablr-code-challenge_production:latest $DOCKER_USERNAME/innablr-code-challenge_production
+docker push $DOCKER_USERNAME/innablr-code-challenge_production
