@@ -1,0 +1,10 @@
+FROM node:11
+
+COPY package.json package-lock.json /workspace/
+RUN cd /workspace && npm install
+
+ADD . /workspace
+
+WORKDIR /workspace
+
+CMD ["npm", "test"]

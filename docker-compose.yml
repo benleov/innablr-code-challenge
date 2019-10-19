@@ -1,0 +1,41 @@
+version: '3.2'
+
+services:
+
+  # run locally for development (watches files)
+  develop:
+    build:
+      context: .
+      dockerfile: Dockerfile-develop
+    env_file: .testenv
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/workspace
+
+  # run jest tests
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    env_file: .testenv
+    volumes:
+      - .:/workspace
+
+  # build production webpack bundle
+  package:
+    build:
+      context: .
+      dockerfile: Dockerfile-package
+    volumes:
+      - .:/workspace
+
+  # run production artifact
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile-production
+    volumes:
+      - ./dist:/workspace/dist
+    ports:
+      - 8080:8080

@@ -1,0 +1,7 @@
+FROM node:11
+
+ADD ./dist/ /workspace/
+
+WORKDIR /workspace
+
+CMD env $(cat .env | xargs) node bundle.js

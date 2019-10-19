@@ -1,0 +1,11 @@
+FROM node:11
+
+COPY package.json package-lock.json /workspace/
+
+RUN cd /workspace && npm install
+
+ADD . /workspace
+WORKDIR /workspace
+
+# write the commit hash to .env and bundle js (TODO: TRAVIS_COMMIT)
+CMD mkdir -p dist && cp build.yml dist/ && printf "%s" "export BUILD_HASH=123" > "dist/.env" && npm run build

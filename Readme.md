@@ -53,15 +53,34 @@ accustomed to.
   
 - 
 
-
-To run locally 
+To run development container:
 
 ```$command
- npm run start 
+# non docker
+npm run start 
+
+# docker
+docker-compose up develop
 ```
 
 To run application unit tests:
 
 ```$command
+# non docker
 npm run test
+
+# within docker
+docker-compose up test
+```
+
+To build production bundle with build.yaml and .env file containing repo hash:
+
+```$command
+docker-compose up package
+```
+
+To run production container:
+
+```$command
+docker-compose up production
 ```
