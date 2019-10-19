@@ -82,6 +82,7 @@ docker-compose up test
 To build production bundle with build.yaml and .env file containing repo hash:
 
 (NOTE: this required TRAVIS_COMMIT environment variable to be set)
+
 ```$command
 docker-compose up package
 ```
