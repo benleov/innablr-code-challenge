@@ -6,6 +6,15 @@ node_js:
 services:
   - docker
 
+# build all containers
 build:
-  - docker-compose build
+  - docker-compose run package
+  - docker-compose build production
+test:
+  - docker-compose run test
+publish:
+  provider: script
+  script: bash scripts/docker_push
+  on:
+    branch: master
 
