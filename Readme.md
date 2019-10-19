@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/benleov/innablr-code-challenge.svg?branch=master)](https://travis-ci.org/benleov/innablr-code-challenge)
+
 ## The Challenge:
 
 A large microservices project has set course to develop a considerable number of REST API's 
