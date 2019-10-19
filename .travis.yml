@@ -6,13 +6,13 @@ node_js:
 services:
   - docker
 
-# build all containers
-build:
+# NOTE: tests will already run as a part of the standard node js setup in travis
+
+before_deploy:
   - docker-compose run package
   - docker-compose build production
-test:
-  - docker-compose run test
-publish:
+
+deploy:
   provider: script
   script: bash scripts/docker_push
   on:
