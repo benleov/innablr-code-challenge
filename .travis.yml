@@ -1,4 +1,5 @@
 language: node_js
+sudo: required # This should not be required; for some reason the artifacts are written read only so cannot be deleted
 
 node_js:
   - "node"
@@ -6,15 +7,16 @@ node_js:
 services:
   - docker
 
-# NOTE: tests will already run as a part of the standard node js setup in travis
+# NOTE: tests will already run as a part of the standard node js pipeline in travis
 
 before_deploy:
+  - export TRAVIS_COMMIT="$(git rev-parse --short ${TRAVIS_COMMIT})"
   - docker-compose run package
   - docker-compose build production
 
 deploy:
   provider: script
-  script: bash scripts/docker_push
+  script: bash scripts/docker-push
   on:
     branch: master
 

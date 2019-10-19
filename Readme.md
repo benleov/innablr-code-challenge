@@ -46,10 +46,18 @@ accustomed to.
 
 ### Notes
 
-- ```build.yml``` ontains metadata about the project, including the application name, version and description.
+Workflow is as follows:
+
+- Dockerfile-develop - a container to run while developing locally
+- Dockerfile-test - a container to run jest tests
+- Dockerfile-package - Packages up node with build.yml and .env file with commit hash and puts it into ./dist
+- Dockerfile-production - Adds dist directory to container, puts .env into the environment and runs node.
+
+- ```build.yml``` contains metadata about the project, including the application name, version and description.
 - ```lastcommitsha``` - is placed in an .env file by package, and then read into the environment when running.
 - Application source code is in ```src/```
 - Application test source code is in ```test/```
+- Script for pushing image to docker.io is in ```scripts/docker-push```
 
 To run development container:
 
