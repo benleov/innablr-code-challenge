@@ -4,4 +4,4 @@ ADD ./dist/ /workspace/
 
 WORKDIR /workspace
 
-CMD env $(cat .env | xargs) node bundle.js
+CMD eval $(cat .env) node bundle.js
