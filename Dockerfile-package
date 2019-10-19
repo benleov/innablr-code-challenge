@@ -7,5 +7,5 @@ RUN cd /workspace && npm install
 ADD . /workspace
 WORKDIR /workspace
 
-# write the commit hash to .env and bundle js
+# write the commit hash to dist/.env, bundle js and copy build.yml
 CMD mkdir -p dist && cp build.yml dist/ && printf "%s" "export BUILD_HASH=$TRAVIS_COMMIT" > "dist/.env" && npm run build
