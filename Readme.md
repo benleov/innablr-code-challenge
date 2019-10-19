@@ -48,18 +48,18 @@ accustomed to.
 
 Workflow is as follows:
 
-- Dockerfile-develop - a container to run while developing locally
-- Dockerfile-test - a container to run jest tests
-- Dockerfile-package - Packages up node with build.yml and .env file with commit hash and puts it into ./dist
+- Dockerfile-develop - A container to run while developing locally
+- Dockerfile-test - A container to run jest tests
+- Dockerfile-package - Packages up node source with build.yml and .env file (containing commit hash) and puts it into ./dist
 - Dockerfile-production - Adds dist directory to container, puts .env into the environment and runs node.
 
 - ```build.yml``` contains metadata about the project, including the application name, version and description.
-- ```lastcommitsha``` - is placed in an .env file by package, and then read into the environment when running.
+- ```lastcommitsha``` is placed in an .env file by package, and then read into the environment before running node.
 - Application source code is in ```src/```
 - Application test source code is in ```test/```
 - Script for pushing image to docker.io is in ```scripts/docker-push```
 
-To run development container:
+To run development server:
 
 ```$command
 # non docker
@@ -81,6 +81,7 @@ docker-compose up test
 
 To build production bundle with build.yaml and .env file containing repo hash:
 
+(NOTE: this required TRAVIS_COMMIT environment variable to be set)
 ```$command
 docker-compose up package
 ```
@@ -91,3 +92,8 @@ To run production container:
 docker-compose up production
 ```
 
+To run the image on dockerhub:
+
+```$command
+docker run -p 8080:8080 benleov/innablr-code-challenge_production
+```
