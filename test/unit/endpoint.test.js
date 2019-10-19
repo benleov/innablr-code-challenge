@@ -8,8 +8,7 @@ describe('root endpoint', () => {
             .get('/')
             .send()
         expect(res.statusCode).toEqual(200)
-        console.log(res)
-         expect(res.text).toEqual("Hello World")
+        expect(res.text).toEqual("Hello World")
     })
 
     afterAll(done => {
