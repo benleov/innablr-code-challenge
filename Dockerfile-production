@@ -11,14 +11,14 @@ RUN npm install
 WORKDIR /app
 
 COPY src /app/src
-COPY build.yml /app/
-COPY webpack.config.js /app/
-COPY package.json package-lock.json /app/
+COPY build.yml webpack.config.js package.json package-lock.json /app/
 
 RUN cp -a /dependencies/node_modules /app/
 RUN npm run build
 
 # write the commit hash to dist/.env, bundle js and copy build.yml
+ARG TRAVIS_COMMIT
+
 RUN printf "%s" "BUILD_HASH=$TRAVIS_COMMIT" > /app/.env
 
 CMD eval $(cat .env) node bundle.js

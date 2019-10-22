@@ -10,7 +10,7 @@ services:
 # NOTE: tests will already run as a part of the standard node js pipeline in travis
 
 before_deploy:
-  - docker-compose build production
+  - docker-compose build --build-arg TRAVIS_COMMIT=$TRAVIS_COMMIT production
 
 deploy:
   provider: script

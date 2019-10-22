@@ -84,9 +84,13 @@ npm run test
 docker-compose up test
 ```
 
-To run production container:
+To build production container:
 
-(NOTE: this required TRAVIS_COMMIT environment variable to be set)
+```$command
+docker-compose build --build-arg TRAVIS_COMMIT=123 production
+```
+
+To run production container:
 
 ```$command
 docker-compose up production

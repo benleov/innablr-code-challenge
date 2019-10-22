@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
 
-  # run locally for development (watches files)
+  # local development (watches files)
   develop:
     build:
       context: .
@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/workspace
 
-  # run jest tests
+  # jest tests
   test:
     build:
       context: .
@@ -22,14 +22,14 @@ services:
     volumes:
       - .:/workspace
 
-  # run production artifact
+  # production container
   production:
     build:
       context: .
       dockerfile: Dockerfile-production
+      args:
+        - TRAVIS_COMMIT
     volumes:
-      - ./dist:/workspace/dist
+      - .:/workspace
     ports:
       - 8080:8080
-    environment:
-      - TRAVIS_COMMIT
