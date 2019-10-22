@@ -10,7 +10,6 @@ services:
 # NOTE: tests will already run as a part of the standard node js pipeline in travis
 
 before_deploy:
-  - docker-compose run package
   - docker-compose build production
 
 deploy:

@@ -52,8 +52,7 @@ There are 4 containers managed by docker-compose:
 
 - Dockerfile-develop - A container to run while developing locally (watches changes)
 - Dockerfile-test - A container to run jest tests
-- Dockerfile-package - Packages up node source with build.yml and .env file (containing commit hash) and puts it into ./dist
-- Dockerfile-production - Adds dist directory to container, puts .env into the environment and runs node.
+- Dockerfile-production - Production container 
 
 ```build.yml``` contains metadata about the project, including the application name, version and description.
 
@@ -67,6 +66,7 @@ To run development server:
 
 ```$command
 # non docker
+npm install
 npm run start 
 
 # docker
@@ -77,21 +77,16 @@ To run application unit tests:
 
 ```$command
 # non docker
+npm install
 npm run test
 
 # within docker
 docker-compose up test
 ```
 
-To build production bundle with build.yaml and .env file containing repo hash:
+To run production container:
 
 (NOTE: this required TRAVIS_COMMIT environment variable to be set)
-
-```$command
-docker-compose up package
-```
-
-To run production container:
 
 ```$command
 docker-compose up production

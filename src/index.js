@@ -13,7 +13,6 @@ app.get('/', (req, res) => {
 // status page
 app.get('/status', (req, res) => {
 
-
     try {
         let output = {
             [config.name]: [{

@@ -22,16 +22,6 @@ services:
     volumes:
       - .:/workspace
 
-  # build production webpack bundle
-  package:
-    build:
-      context: .
-      dockerfile: Dockerfile-package
-    volumes:
-      - .:/workspace
-    environment:
-      - TRAVIS_COMMIT
-
   # run production artifact
   production:
     build:
@@ -41,3 +31,5 @@ services:
       - ./dist:/workspace/dist
     ports:
       - 8080:8080
+    environment:
+      - TRAVIS_COMMIT

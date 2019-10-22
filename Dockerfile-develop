@@ -1,10 +1,11 @@
 FROM node:11
 
-COPY package.json package-lock.json /workspace/
-RUN cd /workspace && npm install
-
-ADD . /workspace
-
 WORKDIR /workspace
+
+RUN npm install -g nodemon
+
+COPY package.json package-lock.json ./
+
+RUN npm install && mv /workspace/node_modules /node_modules
 
 CMD ["npm", "start"]
