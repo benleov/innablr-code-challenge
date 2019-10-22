@@ -1,5 +1,4 @@
 language: node_js
-sudo: required # This should not be required; for some reason the artifacts are written as root so cannot be deleted
 
 node_js:
   - "node"
