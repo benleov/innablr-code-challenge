@@ -64,6 +64,7 @@ npm install
 npm run start 
 
 # docker
+docker-compose build --build-arg TRAVIS_COMMIT=123 develop
 docker-compose up develop
 ```
 
@@ -75,6 +76,7 @@ npm install
 npm run test
 
 # within docker
+docker-compose build --build-arg TRAVIS_COMMIT=123 test
 docker-compose up test
 ```
 
