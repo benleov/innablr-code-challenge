@@ -18,7 +18,7 @@ app.get('/status', (req, res) => {
             [config.name]: [{
                 "version": config.version,
                 "description": config.description,
-                "lastcommitssha": process.env.BUILD_HASH
+                "lastcommitssha": process.env.TRAVIS_COMMIT
             }]
         }
         res.status(200).send(output)

@@ -6,8 +6,9 @@ services:
   develop:
     build:
       context: .
-      dockerfile: Dockerfile-develop
-    env_file: .testenv
+      dockerfile: Dockerfile
+      args:
+        - TRAVIS_COMMIT
     ports:
       - 8080:8080
     volumes:
@@ -17,19 +18,21 @@ services:
   test:
     build:
       context: .
-      dockerfile: Dockerfile-test
-    env_file: .testenv
+      dockerfile: Dockerfile
     volumes:
       - .:/workspace
-
+    command: "npm test"
+    environment:
+      - TRAVIS_COMMIT
   # production container
   production:
     build:
       context: .
-      dockerfile: Dockerfile-production
+      dockerfile: Dockerfile
       args:
         - TRAVIS_COMMIT
     volumes:
       - .:/workspace
     ports:
       - 8080:8080
+    command: "node bundle.js"

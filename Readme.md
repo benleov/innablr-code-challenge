@@ -48,12 +48,6 @@ accustomed to.
 
 ### Notes
 
-There are 4 containers managed by docker-compose:
-
-- Dockerfile-develop - A container to run while developing locally (watches changes)
-- Dockerfile-test - A container to run jest tests
-- Dockerfile-production - Production container 
-
 ```build.yml``` contains metadata about the project, including the application name, version and description.
 
 - Application source code is in ```src/```
